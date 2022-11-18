@@ -1,25 +1,44 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Imput from "./imput";
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
 
 //create your first component
 const Home = () => {
+	const [inputValue, setinputValue] = useState("");
+	const [value, setValue]= useState([]);
+	
+	const change =(event)=>{
+		setinputValue(event.target.value)
+	};
+
+	
+	const keyDown  =(event)=>{
+		if (event.keyCode == "13" && inputValue){
+		  setValue([...value, inputValue])
+		  setinputValue("");
+		 
+	 } }
+ 
+
+	 useEffect (()=>{
+		fetch('https://assets.breatheco.de/apis/fake/todos/user/kgth')
+		.then((response)=>{
+			return response.json()
+		}).then((response)=>{
+			setinputValue(response.label)
+		})
+},[])
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<div className="container text-center">
+						<input type="text" onChange={change} onKeyDown={keyDown} value={inputValue}  placeholder="write something..... "/>
+					{
+					value.map((value, index)=>{
+							return <Imput key={index} name={value}/>		
+					})}
+						</div>
+
 	);
 };
 
