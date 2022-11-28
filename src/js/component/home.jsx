@@ -20,15 +20,24 @@ const Home = () => {
 		 
 	 } }
  
-
 	 useEffect (()=>{
-		fetch('https://assets.breatheco.de/apis/fake/todos/user/kgth')
+		/*const options = {
+			method: "PUT",
+			body: JSON.stringify(todos),
+			headers: {
+			  "Content-Type": "application/json"
+		} }*/
+		
+		fetch('https://assets.breatheco.de/apis/fake/todos/user/kgthcruz-10' )
 		.then((response)=>{
 			return response.json()
 		}).then((response)=>{
-			setinputValue(response.label)
+			setinputValue(response)
 		})
-},[])
+},[]) 
+
+
+
 
 	return (
 		<div className="container text-center">
