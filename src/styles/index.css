@@ -1,12 +1,24 @@
 
-/* 
-
-    You can write your own styles here...
+.container {
+    margin-top: 50px;
     
     
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
+    }
     
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+    .input-value{
+    text-align: center;
+        border: solid gray 1px;
+        width: 500px;
+        height: 40px;
+        
+    }
+    
+    button{
+    
+        text-align: right;
+    }
+    input{
+        width: 500px;
+        height: 40px;
+    
+    }
