@@ -44,13 +44,12 @@ const Home = () => {
 },[]) 
 	 
 const bottonDelete =(e)=>{
-	const filtered = value.filter(item =>item != e)
+	const filtered = value.filter(item =>item.label != e)
 	setValue(filtered)
 	const options = {
 		method: 'DELETE',
-		body: JSON.stringify([...value, {label: inputValue, done: false}]),
+		body: JSON.stringify(filtered),
 	}
-	
 	fetch('https://assets.breatheco.de/apis/fake/todos/user/kgth-1',options )
 	.then((response)=>{
 		return response.json()
